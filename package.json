@@ -4,6 +4,19 @@
     "description": "Tailwind CSS with Intersection Observer Variants",
     "author": "Lars Heidkämper",
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/heidkaemper/tailwindcss-intersect.git"
+    },
+    "homepage": "https://github.com/heidkaemper/tailwindcss-intersect",
+    "keywords": [
+        "tailwindcss",
+        "tailwind",
+        "plugin",
+        "intersect",
+        "intersection",
+        "observer"
+    ],
     "main": "dist/plugin.js",
     "module": "dist/observer.esm.js",
     "unpkg": "dist/observer.min.js",
