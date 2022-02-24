@@ -1,0 +1,25 @@
+{
+    "name": "tailwindcss-intersect",
+    "version": "1.0.0-beta.0",
+    "description": "Tailwind CSS with Intersection Observer Variants",
+    "author": "Lars Heidkämper",
+    "license": "MIT",
+    "main": "dist/plugin.js",
+    "module": "dist/observer.esm.js",
+    "unpkg": "dist/observer.min.js",
+    "scripts": {
+        "dev": "npx tailwindcss -c ./example/tailwind.config.js -o ./example/style.css",
+        "watch": "npx tailwindcss -c ./example/tailwind.config.js -o ./example/style.css --watch",
+        "prod": "npx tailwindcss -c ./example/tailwind.config.js -o ./example/style.css --minify",
+        "build": "node scripts/build.js && npm run prod",
+        "eslint": "node node_modules/eslint/bin/eslint.js --config ./scripts/.eslintrc.js src/**/*.js"
+    },
+    "peerDependencies": {
+        "tailwindcss": ">=3.0.0"
+    },
+    "devDependencies": {
+        "esbuild": "^0.14.23",
+        "eslint": "^8.9.0",
+        "tailwindcss": "^3.0.23"
+    }
+}
