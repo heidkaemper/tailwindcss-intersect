@@ -10,8 +10,9 @@ Install the package with NPM
 npm install -D tailwindcss-intersect
 ```
 
-### 1.1 Add the plugin to your `tailwind.config.js` file
+### 1.1 Add the plugin to your tailwind.config.js file
 ```js
+// tailwind.config.js
 module.exports = {
     // ...
     plugins: [
