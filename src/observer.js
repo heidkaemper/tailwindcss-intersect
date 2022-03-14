@@ -7,12 +7,12 @@ const Observer = {
                 let observer = new IntersectionObserver(entries => {
                     entries.forEach(entry => {
                         if (entry.intersectionRatio === 0) {
-                            element.classList.remove('is-intersecting');
+                            element.setAttribute('no-intersect', '');
 
                             return;
                         }
 
-                        element.classList.add('is-intersecting');
+                        element.removeAttribute('no-intersect');
 
                         element.classList.contains('intersect-once') && observer.disconnect();
                     });
