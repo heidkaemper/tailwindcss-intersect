@@ -21,9 +21,9 @@
     "module": "dist/observer.esm.js",
     "unpkg": "dist/observer.min.js",
     "scripts": {
-        "dev": "npx tailwindcss -c ./example/tailwind.config.js -o ./example/style.css",
-        "watch": "npx tailwindcss -c ./example/tailwind.config.js -o ./example/style.css --watch",
-        "prod": "npx tailwindcss -c ./example/tailwind.config.js -o ./example/style.css --minify",
+        "dev": "npx tailwindcss -c ./docs/examples/tailwind.config.js -o ./docs/examples/styles.css",
+        "watch": "npx tailwindcss -c ./docs/examples/tailwind.config.js -o ./docs/examples/styles.css --watch",
+        "prod": "npx tailwindcss -c ./docs/examples/tailwind.config.js -o ./docs/examples/styles.css --minify",
         "build": "node scripts/build.js && npm run prod",
         "eslint": "node node_modules/eslint/bin/eslint.js --config ./scripts/.eslintrc.js src/**/*.js"
     },

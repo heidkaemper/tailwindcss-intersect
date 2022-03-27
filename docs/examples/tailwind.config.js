@@ -1,11 +1,11 @@
 module.exports = {
     content: [
-        './example/**/*.html',
+        './docs/examples/**/*.html',
     ],
     theme: {
         extend: {},
     },
     plugins: [
-        require('../src/plugin.js')
+        require('../../src/plugin.js')
     ],
 }

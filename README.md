@@ -5,6 +5,10 @@ Imagine you could write an Intersection Observer like a Tailwind CSS variant:
 <div class="opacity-0 intersect:opacity-100 transition-opacity"></div>
 ```
 
+### Demo
+[Click here to see it in action](https://heidkaemper.github.io/tailwindcss-intersect)
+([View Source](https://github.com/heidkaemper/tailwindcss-intersect/blob/main/docs/examples/cards/index.html))
+
 ---
 
 ## Installation
