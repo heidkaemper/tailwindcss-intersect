@@ -20,7 +20,9 @@
     "main": "dist/plugin.js",
     "module": "dist/observer.esm.js",
     "unpkg": "dist/observer.min.js",
-    "files": ["/dist"],
+    "files": [
+        "/dist"
+    ],
     "scripts": {
         "dev": "npx tailwindcss -c ./docs/examples/tailwind.config.js -o ./docs/examples/styles.css",
         "watch": "npx tailwindcss -c ./docs/examples/tailwind.config.js -o ./docs/examples/styles.css --watch",
