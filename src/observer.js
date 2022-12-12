@@ -1,25 +1,33 @@
 const Observer = {
     start() {
-        document.addEventListener('DOMContentLoaded', () => {
-            const elements = document.querySelectorAll('[class*=" intersect:"],[class*=":intersect:"],[class^="intersect:"]');
+        if (document.readyState !== 'complete') {
+            document.addEventListener('DOMContentLoaded', this.observe);
 
-            elements.forEach(element => {
-                let observer = new IntersectionObserver(entries => {
-                    entries.forEach(entry => {
-                        if (entry.intersectionRatio === 0) {
-                            element.setAttribute('no-intersect', '');
+            return;
+        }
 
-                            return;
-                        }
+        this.observe();
+    },
 
-                        element.removeAttribute('no-intersect');
+    observe() {
+        const elements = document.querySelectorAll('[class*=" intersect:"],[class*=":intersect:"],[class^="intersect:"]');
 
-                        element.classList.contains('intersect-once') && observer.disconnect();
-                    });
+        elements.forEach(element => {
+            let observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.intersectionRatio === 0) {
+                        element.setAttribute('no-intersect', '');
+
+                        return;
+                    }
+
+                    element.removeAttribute('no-intersect');
+
+                    element.classList.contains('intersect-once') && observer.disconnect();
                 });
-
-                observer.observe(element);
             });
+
+            observer.observe(element);
         });
     }
 };
