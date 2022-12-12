@@ -15,7 +15,7 @@ const Observer = {
         elements.forEach(element => {
             let observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
-                    if (entry.intersectionRatio === 0) {
+                    if (! entry.isIntersecting) {
                         element.setAttribute('no-intersect', '');
 
                         return;
