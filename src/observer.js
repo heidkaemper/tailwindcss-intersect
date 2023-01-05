@@ -13,6 +13,8 @@ const Observer = {
         const elements = document.querySelectorAll('[class*=" intersect:"],[class*=":intersect:"],[class^="intersect:"]');
 
         elements.forEach(element => {
+            element.setAttribute("no-intersect", "");
+
             let observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     if (! entry.isIntersecting) {
