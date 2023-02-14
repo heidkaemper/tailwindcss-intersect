@@ -64,3 +64,9 @@ If you want to define the intersection behavior in a custom class (e.g. with the
 ```html
 <div class="intersect custom-class"></div>
 ```
+
+---
+
+<a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind%20CSS-3+-38bdf8?style=for-the-badge"></a>
+<a href="https://www.npmjs.com/package/tailwindcss-intersect"><img src="https://img.shields.io/npm/v/tailwindcss-intersect?style=for-the-badge"></a>
+<a href="https://www.npmjs.com/package/tailwindcss-intersect"><img src="https://img.shields.io/npm/dt/tailwindcss-intersect?style=for-the-badge"></a>
