@@ -10,7 +10,7 @@ const Observer = {
     },
 
     observe() {
-        const elements = document.querySelectorAll('[class*=" intersect:"],[class*=":intersect:"],[class^="intersect:"]');
+        const elements = document.querySelectorAll('[class*=" intersect:"],[class*=":intersect:"],[class^="intersect:"],[class="intersect"],[class*=" intersect "],[class^="intersect "],[class$=" intersect"]');
 
         elements.forEach(element => {
             let observer = new IntersectionObserver(entries => {

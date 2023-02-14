@@ -58,3 +58,9 @@ You can use `intersect-once` if you want to trigger the event only on the first 
 ```html
 <div class="intersect:animate-spin intersect-once"></div>
 ```
+
+### Custom classes
+If you want to define the intersection behavior in a custom class (e.g. with the @apply directive), add a `intersect` class to your HTML element.
+```html
+<div class="intersect custom-class"></div>
+```
