@@ -23,9 +23,9 @@
         "/dist"
     ],
     "scripts": {
-        "dev": "npx tailwindcss -c ./docs/examples/tailwind.config.js -o ./docs/examples/styles.css",
-        "watch": "npx tailwindcss -c ./docs/examples/tailwind.config.js -o ./docs/examples/styles.css --watch",
-        "prod": "npx tailwindcss -c ./docs/examples/tailwind.config.js -o ./docs/examples/styles.css --minify",
+        "dev": "npx tailwindcss -c ./docs/example/tailwind.config.js -o ./docs/example/styles.css",
+        "watch": "npx tailwindcss -c ./docs/example/tailwind.config.js -o ./docs/example/styles.css --watch",
+        "prod": "npx tailwindcss -c ./docs/example/tailwind.config.js -o ./docs/example/styles.css --minify",
         "build": "node scripts/build.js && npm run prod",
         "test": "jest --setupFilesAfterEnv '<rootDir>/jest/customMatchers.js'",
         "eslint": "npx eslint src/**",
