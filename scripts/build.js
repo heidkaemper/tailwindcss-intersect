@@ -9,7 +9,7 @@ build({
     entryPoints: ['src/observer.cdn.js'],
     outfile: 'dist/observer.min.js',
     platform: 'browser',
-    define: { CDN: true },
+    define: { CDN: 'true' },
 });
 
 build({
