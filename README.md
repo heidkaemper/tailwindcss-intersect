@@ -6,8 +6,8 @@ Imagine you could write an Intersection Observer like a Tailwind CSS variant:
 ```
 
 ### Demo
-[Click here to see it in action](https://heidkaemper.github.io/tailwindcss-intersect/examples/cards/)
-([View Source](https://github.com/heidkaemper/tailwindcss-intersect/blob/main/docs/examples/cards/index.html))
+[Click here to see it in action](https://heidkaemper.github.io/tailwindcss-intersect/example/)
+([View Source](https://github.com/heidkaemper/tailwindcss-intersect/blob/main/docs/example/index.html))
 
 ---
 
