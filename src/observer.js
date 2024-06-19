@@ -1,7 +1,7 @@
 const Observer = {
     start() {
         if (document.readyState !== 'complete') {
-            document.addEventListener('DOMContentLoaded', this.observe);
+            document.addEventListener('DOMContentLoaded', () => this.observe());
 
             return;
         }
@@ -10,10 +10,18 @@ const Observer = {
     },
 
     observe() {
-        const elements = document.querySelectorAll('[class*=" intersect:"],[class*=":intersect:"],[class^="intersect:"],[class="intersect"],[class*=" intersect "],[class^="intersect "],[class$=" intersect"]');
+        const selectors = [
+            '[class*=" intersect:"]',
+            '[class*=":intersect:"]',
+            '[class^="intersect:"]',
+            '[class="intersect"]',
+            '[class*=" intersect "]',
+            '[class^="intersect "]',
+            '[class$=" intersect"]'
+        ];
 
-        elements.forEach(element => {
-            let observer = new IntersectionObserver(entries => {
+        document.querySelectorAll(selectors.join(',')).forEach(element => {
+            const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     if (! entry.isIntersecting) {
                         element.setAttribute('no-intersect', '');
@@ -25,11 +33,25 @@ const Observer = {
 
                     element.classList.contains('intersect-once') && observer.disconnect();
                 });
+            }, {
+                threshold: this.getThreshold(element),
             });
 
             observer.observe(element);
         });
-    }
+    },
+
+    getThreshold(element) {
+        if (element.classList.contains('intersect-full')) {
+            return 0.99;
+        }
+    
+        if (element.classList.contains('intersect-half')) {
+            return 0.5;
+        }
+    
+        return 0;
+    },
 };
 
 export default Observer;
