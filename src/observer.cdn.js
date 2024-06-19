@@ -1,3 +1,3 @@
-import Observer from './observer.js';
+import Observer from './observer.js'
 
-Observer.start();
+Observer.start()

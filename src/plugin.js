@@ -1,7 +1,7 @@
-import plugin from 'tailwindcss/plugin';
+import plugin from 'tailwindcss/plugin'
 
 export default plugin(
     ({ addVariant }) => {
-        addVariant('intersect', '&:not([no-intersect])');
+        addVariant('intersect', '&:not([no-intersect])')
     },
-);
+)

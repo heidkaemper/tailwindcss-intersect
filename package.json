@@ -28,15 +28,18 @@
         "prod": "npx tailwindcss -c ./docs/example/tailwind.config.js -o ./docs/example/styles.css --minify",
         "build": "node scripts/build.js && npm run prod",
         "test": "jest --setupFilesAfterEnv '<rootDir>/jest/customMatchers.js'",
-        "eslint": "npx eslint src/**",
-        "eslint:fix": "npx eslint src/** --fix"
+        "lint": "npx eslint {src,jest}/**",
+        "lint:fix": "npx eslint {src,jest}/** --fix"
     },
     "peerDependencies": {
         "tailwindcss": ">=3.2.0"
     },
     "devDependencies": {
+        "@eslint/js": "^9.5.0",
         "esbuild": "^0.21.5",
-        "eslint": "^8.41",
+        "eslint": "^9.5.0",
+        "eslint-plugin-jest": "^28.6.0",
+        "globals": "^15.6.0",
         "jest": "^29.7.0",
         "prettier": "^2.8.8",
         "tailwindcss": "^3.2.0"
