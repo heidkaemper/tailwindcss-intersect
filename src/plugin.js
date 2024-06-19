@@ -1,6 +1,6 @@
-import plugin from 'tailwindcss/plugin'
+const plugin = require('tailwindcss/plugin')
 
-export default plugin(
+module.exports = plugin(
     ({ addVariant }) => {
         addVariant('intersect', '&:not([no-intersect])')
     },

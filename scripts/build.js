@@ -2,7 +2,7 @@ const fs = require('fs');
 const esbuild = require("esbuild");
 
 if (! fs.existsSync('./dist')) {
-    fs.mkdirSync('./dist', 0744);
+    fs.mkdirSync('./dist');
 }
 
 build({
