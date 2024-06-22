@@ -6,24 +6,10 @@ if (! fs.existsSync('./dist')) {
 }
 
 build({
-    entryPoints: ['src/observer.cdn.js'],
+    entryPoints: ['src/observer/cdn.js'],
     outfile: 'dist/observer.min.js',
     platform: 'browser',
     define: { CDN: 'true' },
-});
-
-build({
-    entryPoints: ['src/observer.js'],
-    outfile: 'dist/observer.esm.js',
-    platform: 'neutral',
-    mainFields: ['main', 'module'],
-});
-
-build({
-    entryPoints: ['src/plugin.js'],
-    outfile: 'dist/plugin.js',
-    target: ['node10.4'],
-    platform: 'node',
 });
 
 function build(options) {
