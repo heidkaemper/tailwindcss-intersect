@@ -6,7 +6,7 @@ function run(config, plugin = tailwindcss) {
     const { currentTestName } = expect.getState()
 
     config = {
-        plugins: [require('../src/plugin/index.cjs')],
+        plugins: [require('../src/plugin/index.js')],
         corePlugins: { preflight: false },
         ...config,
     }

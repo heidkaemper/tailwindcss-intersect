@@ -16,11 +16,12 @@
         "intersection",
         "observer"
     ],
-    "main": "dist/plugin.js",
-    "module": "dist/observer.esm.js",
+    "main": "src/plugin/index.cjs",
+    "module": "src/index.js",
     "unpkg": "dist/observer.min.js",
     "files": [
-        "/dist"
+        "/dist",
+        "/src"
     ],
     "scripts": {
         "dev": "npx tailwindcss -c ./docs/example/tailwind.config.js -o ./docs/example/styles.css",
@@ -32,7 +33,7 @@
         "lint:fix": "npx eslint {src,jest}/** --fix"
     },
     "peerDependencies": {
-        "tailwindcss": ">=3.2.0"
+        "tailwindcss": ">=3.4.0"
     },
     "devDependencies": {
         "@eslint/js": "^9.5.0",
@@ -42,6 +43,6 @@
         "globals": "^15.6.0",
         "jest": "^29.7.0",
         "prettier": "^2.8.8",
-        "tailwindcss": "^3.2.0"
+        "tailwindcss": "^3.4.0"
     }
 }

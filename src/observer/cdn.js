@@ -1,3 +1,3 @@
-import Observer from './index.js'
+import Observer from './index'
 
 Observer.start()
