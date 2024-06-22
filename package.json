@@ -16,7 +16,7 @@
         "intersection",
         "observer"
     ],
-    "main": "src/plugin/index.cjs",
+    "main": "src/plugin/index.js",
     "module": "src/index.js",
     "unpkg": "dist/observer.min.js",
     "files": [
