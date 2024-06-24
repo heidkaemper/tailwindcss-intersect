@@ -1,18 +1,20 @@
-const path = require('path')
-const postcss = require('postcss')
-const tailwindcss = require('tailwindcss')
+import path from 'path'
+import { fileURLToPath } from 'url'
+import postcss from 'postcss'
+import tailwindcss from 'tailwindcss'
+import intersect from '../src/index.js'
 
 function run(config, plugin = tailwindcss) {
     const { currentTestName } = expect.getState()
 
     config = {
-        plugins: [require('../src/plugin/index.js')],
+        plugins: [intersect],
         corePlugins: { preflight: false },
         ...config,
     }
 
     return postcss(plugin(config)).process('@tailwind utilities', {
-        from: `${path.resolve(__filename)}?test=${currentTestName}`,
+        from: `${path.resolve(fileURLToPath(import.meta.url))}?test=${currentTestName}`,
     })
 }
 

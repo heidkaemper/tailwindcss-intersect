@@ -1,6 +1,7 @@
 // https://github.com/tailwindlabs/tailwindcss/blob/master/jest/customMatchers.js
-const prettier = require('prettier')
-const { diff } = require('jest-diff')
+
+import prettier from 'prettier'
+import { diff } from 'jest-diff'
 
 function format(input) {
   return prettier.format(input, {
