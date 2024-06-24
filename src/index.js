@@ -1,5 +1,5 @@
-import observer from './observer/index'
 import intersect from './plugin/index'
+import Observer from './observer/index'
 
-export default observer
-export { intersect }
+export default intersect
+export { Observer }
