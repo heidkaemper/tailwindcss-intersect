@@ -29,3 +29,10 @@ await esbuild.build({
     platform: 'node',
     target: ['node10.4'],
 })
+
+fs.copyFile('./src/index.d.ts', './dist/index.d.ts', error => {
+    if (error) {
+        console.error(error.message)
+        process.exit(1)
+    }
+})
