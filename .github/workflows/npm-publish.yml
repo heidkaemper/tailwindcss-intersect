@@ -12,8 +12,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '20.x'
-      - run: npm install
-      - run: npm test
+      - run: yarn
+      - run: yarn test
 
   publish:
     needs: test
@@ -24,8 +24,8 @@ jobs:
         with:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
-      - run: npm install
-      - run: npm run build
+      - run: yarn
+      - run: yarn build
       - run: npm version --no-git-tag-version ${{ github.event.release.tag_name }}
       - run: npm publish
         env:
