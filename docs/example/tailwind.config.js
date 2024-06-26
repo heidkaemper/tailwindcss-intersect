@@ -1,4 +1,6 @@
-module.exports = {
+import intersect from './../../src'
+
+export default {
     content: [
         './docs/example/**/*.html',
     ],
@@ -6,6 +8,6 @@ module.exports = {
         extend: {},
     },
     plugins: [
-        require('../../src/index.js')
+        intersect
     ],
 }
