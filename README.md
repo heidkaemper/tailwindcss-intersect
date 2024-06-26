@@ -34,13 +34,13 @@ module.exports = {
 #### Via CDN
 You can include the CDN build of this plugin as a `<script>` tag to your site:
 ```html
-<script defer src="https://unpkg.com/tailwindcss-intersect@1.x.x/dist/observer.min.js"></script>
+<script defer src="https://unpkg.com/tailwindcss-intersect@2.x.x/dist/observer.min.js"></script>
 ```
 
 #### Via NPM
 Alternatively, you can add the plugin to your JavaScript bundle:
 ```js
-import Observer from 'tailwindcss-intersect';
+import { Observer } from 'tailwindcss-intersect';
 
 Observer.start();
 ```
@@ -53,20 +53,47 @@ Use the `intersect:` variant in your classes like you would with every other Tai
 <div class="bg-cyan-500 intersect:bg-indigo-600 transition-colors"></div>
 ```
 
-### The once utility
+## Modifiers
+
+### intersect-once
 You can use `intersect-once` if you want to trigger the event only on the first appearance of an element.
 ```html
 <div class="intersect:animate-spin intersect-once"></div>
 ```
 
-### Custom classes
+### intersect-half
+Use the `intersect-half` utility to trigger the event when at least half of the element is visible. (threshold is set to 0.5)
+```html
+<div class="intersect:animate-spin intersect-half"></div>
+```
+
+### intersect-full
+Use the `intersect-full` utility to trigger the event when when the element is fully visible. (threshold is set to 0.99)
+```html
+<div class="intersect:animate-spin intersect-full"></div>
+```
+
+## Custom classes
 If you want to define the intersection behavior in a custom class (e.g. with the @apply directive), add a `intersect` class to your HTML element.
 ```html
 <div class="intersect custom-class"></div>
 ```
 
+## Migrate from 1.x
+If you have integrated the JavaScript snippet via NPM, change the import like this:
+```js
+// v1.x
+import Observer from 'tailwindcss-intersect';
+
+// v2.x
+import { Observer } from 'tailwindcss-intersect';
+
+Observer.start();
+```
+That's it! 🎉
+
 ---
 
-<a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind%20CSS-3+-38bdf8?style=for-the-badge"></a>
+<a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind%20CSS-3.2+-38bdf8?style=for-the-badge"></a>
 <a href="https://www.npmjs.com/package/tailwindcss-intersect"><img src="https://img.shields.io/npm/v/tailwindcss-intersect?style=for-the-badge"></a>
 <a href="https://www.npmjs.com/package/tailwindcss-intersect"><img src="https://img.shields.io/npm/dt/tailwindcss-intersect?style=for-the-badge"></a>
