@@ -1,6 +1,6 @@
 const Observer = {
     start() {
-        if (document.readyState !== 'complete') {
+        if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => this.observe())
 
             return
