@@ -1,46 +1,34 @@
 import path from 'path'
 import { fileURLToPath } from 'url'
 import postcss from 'postcss'
-import tailwindcss from 'tailwindcss'
-import intersect from '../src/index.js'
+import tailwindcss from '@tailwindcss/postcss'
 
-function run(config, plugin = tailwindcss) {
+async function run(file) {
     const { currentTestName } = expect.getState()
 
-    config = {
-        plugins: [intersect],
-        corePlugins: { preflight: false },
-        ...config,
-    }
+    const config = `
+        @import "tailwindcss/utilities" source(none);
+        @import "./../src/";
+        @source "./${file}";
+    `
 
-    return postcss(plugin(config)).process('@tailwind utilities', {
+    const result = await postcss(tailwindcss()).process(config, {
         from: `${path.resolve(fileURLToPath(import.meta.url))}?test=${currentTestName}`,
     })
+
+    return result.css
 }
 
-it('should add variants', () => {
-    return run({
-        content: [{ raw: String.raw`<div class="intersect:opacity-50 intersect:hover:opacity-100"></div>` }],
-    }).then(result => {
-        expect(result.css).toMatchCss(String.raw`
-            .intersect\:opacity-50:not([no-intersect]) {
-                opacity: 0.5;
-            }
-            .intersect\:hover\:opacity-100:hover:not([no-intersect]) {
-                opacity: 1;
-            }
-        `)
-    })
+it('should add variants', async () => {
+    expect(await run('content/variants.html')).toIncludeAll([
+        '.intersect\\:opacity-50 { &:not([no-intersect]) { opacity: 50%; } }',
+        '.intersect\\:hover\\:opacity-100 { &:not([no-intersect]) { &:hover { @media (hover: hover) { opacity: 100%; } } } }',
+    ])
 })
 
-it('should add arbitrary values', () => {
-    return run({
-        content: [{ raw: String.raw`<div class="intersect:left-[100px]"></div>` }],
-    }).then(result => {
-        expect(result.css).toMatchCss(String.raw`
-            .intersect\:left-\[100px\]:not([no-intersect]) {
-                left: 100px;
-            }
-        `)
-    })
+it('should add arbitrary values', async () => {
+    expect(await run('content/arbitrary-values.html')).toIncludeAll([
+        '.intersect\\:left-\\[100px\\] { &:not([no-intersect]) { left: 100px; } }',
+        '.intersect\\:left-\\(--my-value\\) { &:not([no-intersect]) { left: var(--my-value); } }',
+    ])
 })
