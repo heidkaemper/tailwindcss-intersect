@@ -1,7 +1,6 @@
-import path from 'path'
-import { fileURLToPath } from 'url'
-import postcss from 'postcss'
-import tailwindcss from '@tailwindcss/postcss'
+const path = require('path')
+const postcss = require('postcss')
+const tailwindcss = require('@tailwindcss/postcss')
 
 async function run(file) {
     const { currentTestName } = expect.getState()
@@ -13,7 +12,7 @@ async function run(file) {
     `
 
     const result = await postcss(tailwindcss()).process(config, {
-        from: `${path.resolve(fileURLToPath(import.meta.url))}?test=${currentTestName}`,
+        from: `${path.resolve(__filename)}?test=${currentTestName}`,
     })
 
     return result.css
