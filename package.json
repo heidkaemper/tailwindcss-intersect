@@ -31,8 +31,8 @@
         "prod": "npx @tailwindcss/cli -i docs/example/input.css -o docs/example/output.css --minify",
         "build": "node scripts/build.js && npm run prod",
         "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --setupFilesAfterEnv '<rootDir>/jest/customMatchers.js'",
-        "lint": "npx eslint {src,jest}",
-        "lint:fix": "npx eslint {src,jest} --fix"
+        "lint": "npx eslint --ignore-pattern 'dist/*'",
+        "lint:fix": "npx eslint --ignore-pattern 'dist/*' --fix"
     },
     "peerDependencies": {
         "tailwindcss": ">=3.2.0 || >=4.0.0"
