@@ -13,23 +13,31 @@ Imagine you could write an Intersection Observer like a Tailwind CSS variant:
 
 ## Installation
 This package has two parts. A Tailwind CSS plugin and a tiny JavaScript snippet.<br>
-Download and install it with NPM:
+Download and install it via npm:
 ```sh
-npm install -D tailwindcss-intersect
+npm install tailwindcss-intersect
 ```
 
-### Add the plugin to your tailwind.config.js file
+### Import
+Import it just like Tailwind CSS in your CSS file:
+```css
+/* tailwind css v4.x */
+@import "tailwindcss";
+@import "tailwindcss-intersect";
+```
+
+If you are using **Tailwind CSS v3** or a JavaScript configuration file, import it like this:
 ```js
 // tailwind.config.js
 module.exports = {
-    // ...
-    plugins: [
-        require('tailwindcss-intersect')
-    ],
+  // ...
+  plugins: [
+    require('tailwindcss-intersect')
+  ],
 }
 ```
 
-### Add the necessary JavaScript snippet to your site
+### Add the necessary JavaScript snippet
 
 #### Via CDN
 You can include the CDN build of this plugin as a `<script>` tag to your site:
@@ -79,21 +87,8 @@ If you want to define the intersection behavior in a custom class (e.g. with the
 <div class="intersect custom-class"></div>
 ```
 
-## Migrate from 1.x
-If you have integrated the JavaScript snippet via NPM, change the import like this:
-```js
-// v1.x
-import Observer from 'tailwindcss-intersect';
-
-// v2.x
-import { Observer } from 'tailwindcss-intersect';
-
-Observer.start();
-```
-That's it! 🎉
-
 ---
 
-<a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind%20CSS-3.2+-38bdf8?style=for-the-badge"></a>
-<a href="https://www.npmjs.com/package/tailwindcss-intersect"><img src="https://img.shields.io/npm/v/tailwindcss-intersect?style=for-the-badge"></a>
+<a href="https://v3.tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind%20CSS-3.2+-38bdf8?style=for-the-badge"></a>
+<a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind%20CSS-4.0+-38bdf8?style=for-the-badge"></a>
 <a href="https://www.npmjs.com/package/tailwindcss-intersect"><img src="https://img.shields.io/npm/dt/tailwindcss-intersect?style=for-the-badge"></a>

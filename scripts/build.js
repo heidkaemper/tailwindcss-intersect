@@ -36,3 +36,10 @@ fs.copyFile('./src/index.d.ts', './dist/index.d.ts', error => {
         process.exit(1)
     }
 })
+
+fs.copyFile('./src/index.css', './dist/index.css', error => {
+    if (error) {
+        console.error(error.message)
+        process.exit(1)
+    }
+})
