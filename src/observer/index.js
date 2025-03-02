@@ -9,7 +9,12 @@ const Observer = {
         this.observe()
     },
 
-    observe() {
+    restart() {
+        this.observe(true)
+        this.observe()
+    },
+
+    observe(unobserve = false) {
         const selectors = [
             '[class*=" intersect:"]',
             '[class*=":intersect:"]',
@@ -23,6 +28,12 @@ const Observer = {
         document.querySelectorAll(selectors.join(',')).forEach(element => {
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
+
+                    if(unobserve) {
+                        observer.disconnect()
+                        return
+                    }
+
                     if (! entry.isIntersecting) {
                         element.setAttribute('no-intersect', '')
 

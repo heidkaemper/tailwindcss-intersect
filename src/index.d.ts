@@ -4,6 +4,7 @@ declare const intersect: {
 
 declare const Observer: {
     start(): void,
+    restart(): void,
     observe(): void,
     getThreshold(element: HTMLElement): number,
 }
