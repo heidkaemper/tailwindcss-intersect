@@ -10,11 +10,13 @@ const Observer = {
     },
 
     restart() {
-        this.observe(true)
+        this._observers.forEach(observer => observer.disconnect())
+        this._observers = []
+
         this.observe()
     },
 
-    observe(unobserve = false) {
+    observe() {
         const selectors = [
             '[class*=" intersect:"]',
             '[class*=":intersect:"]',
@@ -28,12 +30,6 @@ const Observer = {
         document.querySelectorAll(selectors.join(',')).forEach(element => {
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
-
-                    if(unobserve) {
-                        observer.disconnect()
-                        return
-                    }
-
                     if (! entry.isIntersecting) {
                         element.setAttribute('no-intersect', '')
 
@@ -45,14 +41,16 @@ const Observer = {
                     element.classList.contains('intersect-once') && observer.disconnect()
                 })
             }, {
-                threshold: this.getThreshold(element),
+                threshold: this._getThreshold(element),
             })
 
             observer.observe(element)
+
+            this._observers.push(observer)
         })
     },
 
-    getThreshold(element) {
+    _getThreshold(element) {
         if (element.classList.contains('intersect-full')) {
             return 0.99
         }
@@ -63,6 +61,8 @@ const Observer = {
 
         return 0
     },
+
+    _observers: [],
 }
 
 export default Observer

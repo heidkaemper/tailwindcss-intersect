@@ -6,7 +6,8 @@ declare const Observer: {
     start(): void,
     restart(): void,
     observe(): void,
-    getThreshold(element: HTMLElement): number,
+    _getThreshold(element: HTMLElement): number,
+    _observers: IntersectionObserver[],
 }
 
 export default intersect
