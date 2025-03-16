@@ -15,7 +15,7 @@ await esbuild.build({
 })
 
 await esbuild.build({
-    entryPoints: ['src/index.js'],
+    entryPoints: ['src/index.mjs'],
     outfile: 'dist/index.esm.js',
     bundle: true,
     platform: 'neutral',
@@ -23,7 +23,7 @@ await esbuild.build({
 })
 
 await esbuild.build({
-    entryPoints: ['src/index.js'],
+    entryPoints: ['src/index.cjs'],
     outfile: 'dist/index.cjs.js',
     bundle: true,
     platform: 'node',
