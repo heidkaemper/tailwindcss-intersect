@@ -52,6 +52,7 @@ import { Observer } from 'tailwindcss-intersect';
 
 Observer.start();
 ```
+Hot Tip: When building a SPA, it may be necessary to restart the Observer on route changes. You can call `Observer.restart()` to do so.
 
 ---
 
