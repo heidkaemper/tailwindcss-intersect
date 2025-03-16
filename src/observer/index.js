@@ -9,6 +9,13 @@ const Observer = {
         this.observe()
     },
 
+    restart() {
+        this._observers.forEach(observer => observer.disconnect())
+        this._observers = []
+
+        this.observe()
+    },
+
     observe() {
         const selectors = [
             '[class*=" intersect:"]',
@@ -34,14 +41,16 @@ const Observer = {
                     element.classList.contains('intersect-once') && observer.disconnect()
                 })
             }, {
-                threshold: this.getThreshold(element),
+                threshold: this._getThreshold(element),
             })
 
             observer.observe(element)
+
+            this._observers.push(observer)
         })
     },
 
-    getThreshold(element) {
+    _getThreshold(element) {
         if (element.classList.contains('intersect-full')) {
             return 0.99
         }
@@ -52,6 +61,8 @@ const Observer = {
 
         return 0
     },
+
+    _observers: [],
 }
 
 export default Observer
