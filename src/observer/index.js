@@ -1,3 +1,13 @@
+const OBSERVE_SELECTORS = [
+    '[class*=" intersect:"]',
+    '[class*=":intersect:"]',
+    '[class^="intersect:"]',
+    '[class="intersect"]',
+    '[class*=" intersect "]',
+    '[class^="intersect "]',
+    '[class$=" intersect"]',
+]
+
 const Observer = {
     start() {
         if (document.readyState === 'loading') {
@@ -17,35 +27,40 @@ const Observer = {
     },
 
     observe() {
-        const selectors = [
-            '[class*=" intersect:"]',
-            '[class*=":intersect:"]',
-            '[class^="intersect:"]',
-            '[class="intersect"]',
-            '[class*=" intersect "]',
-            '[class^="intersect "]',
-            '[class$=" intersect"]'
-        ]
+        const elements = document.querySelector(OBSERVE_SELECTORS.join(','))
+        /**
+         * @type {Map<number, Set<HTMLElement>>}
+         */
+        const byThreshold = new Map()
 
-        document.querySelectorAll(selectors.join(',')).forEach(element => {
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (! entry.isIntersecting) {
-                        element.setAttribute('no-intersect', '')
+        elements.forEach((element) => {
+            const threshold = this._getThreshold(element)
+            if (!byThreshold.has(threshold))
+                byThreshold.set(threshold, new Set())
+            byThreshold.get(threshold).add(element)
+        })
 
-                        return
-                    }
+        byThreshold.forEach((elementSet, threshold) => {
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        const element = entry.target
+                        if (!entry.isIntersecting) {
+                            element.setAttribute('no-intersect', '')
+                            return
+                        }
 
-                    element.removeAttribute('no-intersect')
+                        element.removeAttribute('no-intersect')
+                        if (element.classList.contains('intersect-once'))
+                            observer.unobserve(element)
+                    })
+                },
+                {
+                    threshold,
+                },
+            )
 
-                    element.classList.contains('intersect-once') && observer.disconnect()
-                })
-            }, {
-                threshold: this._getThreshold(element),
-            })
-
-            observer.observe(element)
-
+            elementSet.forEach((element) => observer.observe(element))
             this._observers.push(observer)
         })
     },
