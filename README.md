@@ -82,6 +82,13 @@ Use the `intersect-full` utility to trigger the event when when the element is f
 <div class="intersect:animate-spin intersect-full"></div>
 ```
 
+### Custom threshold
+If `intersect-half` or `intersect-full` don't fit your needs, you can set a custom threshold using Tailwind's arbitrary value syntax: `intersect-[<value>]`, where `<value>` is a number between `0` and `1`.
+```html
+<div class="intersect:animate-spin intersect-[0.3]"></div>
+```
+This triggers the event once 30% of the element is visible. Values outside the `0`–`1` range are clamped.
+
 ## Custom classes
 If you want to define the intersection behavior in a custom class (e.g. with the @apply directive), add a `intersect` class to your HTML element.
 ```html
