@@ -1,9 +1,9 @@
 const NAMED_THRESHOLDS = {
-  "intersect-full": 0.99,
-  "intersect-half": 0.5,
-};
+  'intersect-full': 0.99,
+  'intersect-half': 0.5,
+}
 
-const ARBITRARY_REGEX = /(?:^|\s)intersect-\[([\d.]+)\]/;
+const ARBITRARY_REGEX = /(?:^|\s)intersect-\[([\d.]+)\]/
 
 const Observer = {
     start() {
@@ -65,15 +65,15 @@ const Observer = {
     _getThreshold(element) {
         for (const className in NAMED_THRESHOLDS) {
             if (element.classList.contains(className))
-                return NAMED_THRESHOLDS[className];
+                return NAMED_THRESHOLDS[className]
         }
-        const match = element.className.match(ARBITRARY_REGEX);
+        const match = element.className.match(ARBITRARY_REGEX)
         if (match) {
-            const threshold = parseFloat(match[1]);
+            const threshold = parseFloat(match[1])
             if (!Number.isNaN(threshold))
-                return Math.min(Math.max(0, threshold), 1);
+                return Math.min(Math.max(0, threshold), 1)
         }
-        return 0;
+        return 0
     },
 
     _observers: [],
