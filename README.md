@@ -94,6 +94,12 @@ Grow or shrink the area the element is measured against. You can pass up to four
 <div class="intersect:animate-spin intersect-margin-[0px_0px_100px_0px]"></div>
 ```
 
+## Trigger on load
+Elements already visible on page load do not animate, because their styles apply before the observer runs. Add `no-intersect` to force the animation anyway.
+```html
+<div class="opacity-0 intersect:opacity-100 transition-opacity" no-intersect></div>
+```
+
 ## Custom classes
 If you want to define the intersection behavior in a custom class (e.g. with the @apply directive), add a `intersect` class to your HTML element.
 ```html
