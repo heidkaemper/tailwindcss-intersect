@@ -1,13 +1,11 @@
 import js from '@eslint/js'
 import globals from 'globals'
-import eslintPluginJest from 'eslint-plugin-jest'
 
 export default [
     js.configs.recommended,
-    eslintPluginJest.configs['flat/recommended'],
     {
         languageOptions: {
-            ecmaVersion: 2022,
+            ecmaVersion: 'latest',
             sourceType: 'module',
             globals: {
                 ...globals.browser,
