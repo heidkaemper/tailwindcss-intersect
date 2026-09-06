@@ -8,8 +8,8 @@ async function run(file, options = {}) {
     const config = [
         '@import "tailwindcss" source(none);',
         options?.directive === 'plugin'
-            ? '@plugin "./../";'
-            : '@import "./../";',
+            ? '@plugin "tailwindcss-intersect";'
+            : '@import "tailwindcss-intersect";',
         `@source "./${file}";`,
     ].join('\n')
 
@@ -24,7 +24,7 @@ describe('import directive', () => {
     it('should add variants', async () => {
         expect(await run('content/variants.html', { directive: 'import' })).toIncludeAll([
             '.intersect\\:opacity-50:not([no-intersect]) { opacity: 50%; }',
-            '.intersect\\:hover\\:opacity-100:not([no-intersect]):hover { opacity: 100%; }',
+            '@media (hover: hover) { .intersect\\:hover\\:opacity-100:not([no-intersect]):hover { opacity: 100%; } }',
         ])
     })
 
@@ -40,7 +40,7 @@ describe('plugin directive', () => {
     it('should add variants', async () => {
         expect(await run('content/variants.html', { directive: 'plugin' })).toIncludeAll([
             '.intersect\\:opacity-50:not([no-intersect]) { opacity: 50%; }',
-            '.intersect\\:hover\\:opacity-100:not([no-intersect]):hover { opacity: 100%; }',
+            '@media (hover: hover) { .intersect\\:hover\\:opacity-100:not([no-intersect]):hover { opacity: 100%; } }',
         ])
     })
 

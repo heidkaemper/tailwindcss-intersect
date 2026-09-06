@@ -66,3 +66,5 @@ const Observer = {
 }
 
 export default Observer
+
+export { Observer }

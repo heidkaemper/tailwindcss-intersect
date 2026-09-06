@@ -21,12 +21,11 @@ npm install tailwindcss-intersect
 ### Import
 Import it just like Tailwind CSS in your CSS file:
 ```css
-/* tailwind css v4.x */
 @import "tailwindcss";
 @import "tailwindcss-intersect";
 ```
 
-If you are using **Tailwind CSS v3** or a JavaScript configuration file, import it like this:
+If you are using a JavaScript configuration file, register it there as usual:
 ```js
 // tailwind.config.js
 module.exports = {
@@ -42,13 +41,13 @@ module.exports = {
 #### Via CDN
 You can include the CDN build of this plugin as a `<script>` tag to your site:
 ```html
-<script defer src="https://unpkg.com/tailwindcss-intersect@2.x.x/dist/observer.min.js"></script>
+<script defer src="https://unpkg.com/tailwindcss-intersect@3.x.x/dist/observer.min.js"></script>
 ```
 
 #### Via NPM
-Alternatively, you can add the plugin to your JavaScript bundle:
+Alternatively, you can add the observer to your JavaScript bundle:
 ```js
-import { Observer } from 'tailwindcss-intersect';
+import { Observer } from 'tailwindcss-intersect/observer';
 
 Observer.start();
 ```
@@ -90,6 +89,16 @@ If you want to define the intersection behavior in a custom class (e.g. with the
 
 ---
 
-<a href="https://v3.tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind%20CSS-3.2+-38bdf8?style=for-the-badge"></a>
+## Upgrading from 2.x
+Version 3 requires **Tailwind CSS v4**. If you are still on Tailwind CSS v3, stay on the [2.x releases](https://github.com/heidkaemper/tailwindcss-intersect/tree/2.x).
+
+The observer moved to its own entry point. Update the import path:
+```diff
+- import { Observer } from 'tailwindcss-intersect';
++ import { Observer } from 'tailwindcss-intersect/observer';
+```
+
+---
+
 <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind%20CSS-4.0+-38bdf8?style=for-the-badge"></a>
 <a href="https://www.npmjs.com/package/tailwindcss-intersect"><img src="https://img.shields.io/npm/dt/tailwindcss-intersect?style=for-the-badge"></a>

@@ -16,30 +16,44 @@ await esbuild.build({
 
 await esbuild.build({
     entryPoints: ['src/index.mjs'],
-    outfile: 'dist/index.esm.js',
+    outfile: 'dist/index.mjs',
     bundle: true,
+    format: 'esm',
     platform: 'neutral',
     mainFields: ['main', 'module'],
 })
 
 await esbuild.build({
-    entryPoints: ['src/index.cjs'],
-    outfile: 'dist/index.cjs.js',
+    entryPoints: ['src/index.mjs'],
+    outfile: 'dist/index.cjs',
     bundle: true,
+    format: 'cjs',
     platform: 'node',
-    target: ['node10.4'],
+    mainFields: ['main', 'module'],
+    footer: { js: 'module.exports = module.exports.default' },
 })
 
-fs.copyFile('./src/index.d.ts', './dist/index.d.ts', error => {
-    if (error) {
-        console.error(error.message)
-        process.exit(1)
-    }
+await esbuild.build({
+    entryPoints: ['src/observer/index.js'],
+    outfile: 'dist/observer.mjs',
+    bundle: true,
+    format: 'esm',
+    platform: 'neutral',
 })
 
-fs.copyFile('./src/index.css', './dist/index.css', error => {
-    if (error) {
-        console.error(error.message)
-        process.exit(1)
-    }
+await esbuild.build({
+    entryPoints: ['src/observer/index.js'],
+    outfile: 'dist/observer.cjs',
+    bundle: true,
+    format: 'cjs',
+    platform: 'node',
 })
+
+for (const file of ['index.css', 'index.d.ts', 'observer.d.ts']) {
+    fs.copyFile(`./src/${file}`, `./dist/${file}`, error => {
+        if (error) {
+            console.error(error.message)
+            process.exit(1)
+        }
+    })
+}
