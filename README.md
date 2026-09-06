@@ -81,6 +81,19 @@ Use the `intersect-full` utility to trigger the event when when the element is f
 <div class="intersect:animate-spin intersect-full"></div>
 ```
 
+### intersect-[…]
+Need a different threshold? Pass any value between `0` and `1` as an arbitrary value.
+```html
+<div class="intersect:animate-spin intersect-[0.3]"></div>
+```
+
+### intersect-margin-[…]
+Grow or shrink the area the element is measured against. You can pass up to four values in `px` or `%`, just like the CSS `margin` shorthand.
+```html
+<div class="intersect:animate-spin intersect-margin-[200px]"></div>
+<div class="intersect:animate-spin intersect-margin-[0px_0px_100px_0px]"></div>
+```
+
 ## Custom classes
 If you want to define the intersection behavior in a custom class (e.g. with the @apply directive), add a `intersect` class to your HTML element.
 ```html

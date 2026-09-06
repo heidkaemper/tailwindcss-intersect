@@ -65,9 +65,26 @@ test('resolves the threshold from the modifier classes', () => {
         <div class="intersect:opacity-100"></div>
         <div class="intersect:opacity-100 intersect-half"></div>
         <div class="intersect:opacity-100 intersect-full"></div>
+        <div class="intersect:opacity-100 intersect-[0.3]"></div>
+        <div class="intersect:opacity-100 intersect-[.75]"></div>
+        <div class="intersect:opacity-100 intersect-[5]"></div>
+        <div class="intersect:opacity-100 intersect-[nope]"></div>
     `)
 
-    expect(observers.map(observer => observer.options.threshold)).toEqual([0, 0.5, 0.99])
+    expect(observers.map(observer => observer.options.threshold)).toEqual([0, 0.5, 0.99, 0.3, 0.75, 1, 0])
+})
+
+test('resolves the root margin from the modifier classes', () => {
+    render(`
+        <div class="intersect:opacity-100"></div>
+        <div class="intersect:opacity-100 intersect-margin-[200px]"></div>
+        <div class="intersect:opacity-100 intersect-margin-[10%_0px_-100px_0px]"></div>
+        <div class="intersect:opacity-100 intersect-margin-[200]"></div>
+        <div class="intersect:opacity-100 intersect-margin-[1px_2px_3px_4px_5px]"></div>
+    `)
+
+    expect(observers.map(observer => observer.options.rootMargin))
+        .toEqual(['0px', '200px', '10% 0px -100px 0px', '0px', '0px'])
 })
 
 test('toggles the no-intersect attribute while scrolling in and out', () => {
